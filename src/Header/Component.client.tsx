@@ -7,6 +7,7 @@ import { HeaderNav } from "./Nav";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ImageMedia } from "@/components/Media/ImageMedia";
+import { CMSLink } from "@/components/Link";
 
 interface HeaderClientProps {
   data: Header;
@@ -37,14 +38,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         <HeaderNav data={data} />
 
-        <Button
-          size="lg"
-          variant="default"
-          className="md:flex hidden md:flex-col"
-        >
-          <span className="text-xs font-normal opacity-90">CONTACTEZ-NOUS</span>
-          <span className="text-sm text-black font-bold">819-918-5452</span>
-        </Button>
+        {data.links &&
+          data.links.map((item) => {
+            return (
+              <CMSLink
+                key={item.id}
+                {...item.link}
+                className="bg-primary hover:bg-primary text-card hover:scale-105 transition"
+              />
+            );
+          })}
 
         {/* <div className="flex items-center gap-2">
           <Button variant="secondary" className="lg:flex hidden">

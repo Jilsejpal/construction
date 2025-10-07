@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { ImageMedia } from "../Media/ImageMedia";
 import { Media } from "@/payload-types";
+import Image from "next/image";
 
 type Props = {
   images: (number | Media)[];

@@ -14,7 +14,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             key={i}
             {...link}
             appearance="link"
-            className="font-medium text-xl"
+            className="font-medium text-xl hover:scale-110 transition hover:no-underline"
           />
         );
       })}

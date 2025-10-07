@@ -23,6 +23,7 @@ const columnFields: Field[] = [
     name: "size",
     type: "select",
     defaultValue: "oneThird",
+    localized: true,
     options: [
       {
         label: "One Third",
@@ -46,10 +47,12 @@ const columnFields: Field[] = [
     name: "image",
     type: "upload",
     relationTo: "media",
+    localized: true,
   },
   {
     name: "richText",
     type: "richText",
+    localized: true,
     editor: lexicalEditor({
       features: ({ rootFeatures }) => {
         return [
@@ -88,9 +91,11 @@ const columnFields: Field[] = [
   {
     name: "enableLink",
     type: "checkbox",
+    localized: true,
   },
   link({
     overrides: {
+      localized: true,
       admin: {
         condition: (_data, siblingData) => {
           return Boolean(siblingData?.enableLink);
@@ -111,6 +116,7 @@ export const Content: Block = {
         initCollapsed: true,
       },
       fields: columnFields,
+      localized: true,
     },
   ],
 };

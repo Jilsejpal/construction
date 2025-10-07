@@ -51,10 +51,10 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
       </div>
     );
   } else if (select === "specifications") {
-    const lifestyleImages = lifestyle?.[0].images;
-    const lifestyleRichText = lifestyle?.[0].richText;
+    const lifestyleImages = lifestyle?.[0]?.images;
+    const lifestyleRichText = lifestyle?.[0]?.richText;
     return (
-      <div className="bg-secondary-foreground">
+      <div className="bg-secondary space-y-10">
         <div className="container py-10">
           {richText && (
             <RichText
@@ -76,13 +76,16 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
             })}
           </div>
         </div>
-        <div className="container grid md:grid-cols-3">
-          <CarouselComponent
-            images={lifestyleImages}
-            className="md:col-span-2"
-            indicators={false}
-          />
-          {richText && (
+        <div className="container grid lg:grid-cols-3">
+          {lifestyleImages && (
+            <CarouselComponent
+              images={lifestyleImages}
+              className="md:col-span-2"
+              indicators={false}
+              imgClassName="aspect-[4/3]"
+            />
+          )}
+          {lifestyleRichText && (
             <div className="bg-white p-10">
               <RichText
                 className="mb-0 md:col-span-1"
@@ -92,14 +95,76 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
             </div>
           )}
         </div>
-        <div>Facilities</div>
+        <div className="container pb-10">
+          {facilities &&
+            facilities.map((item, index) => {
+              return (
+                <div
+                  key={item.id}
+                  className="grid lg:grid-cols-2 place-items-end mb-6"
+                >
+                  {index % 2 === 0 ? (
+                    <>
+                      <div>
+                        {richText && (
+                          <div className="bg-white p-4 md:p-10 md:col-span-2 space-y-6">
+                            {item.richText && (
+                              <RichText
+                                className="mb-0"
+                                data={item.richText}
+                                enableGutter={false}
+                              />
+                            )}
+                            <CarouselComponent
+                              images={item.carouselImages}
+                              className=""
+                              indicators={true}
+                              imgClassName="md:aspect-[4/3]"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="md:col-span-1">
+                        <ImageMedia resource={item.displayImage} />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="md:col-span-1">
+                        <ImageMedia resource={item.displayImage} />
+                      </div>
+                      <div>
+                        {richText && (
+                          <div className="bg-white p-4 md:p-10 md:col-span-2 space-y-6">
+                            {item.richText && (
+                              <RichText
+                                className="mb-0 py-8"
+                                data={item.richText}
+                                enableGutter={false}
+                              />
+                            )}
+                            <CarouselComponent
+                              images={item.carouselImages}
+                              className=""
+                              indicators={true}
+                              imgClassName="md:aspect-[4/3]"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })}
+        </div>
       </div>
     );
   } else {
     return (
-      <div className="container">
-        <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-          <div className="max-w-[48rem] flex items-center">
+      <div className="bg-card">
+        <div className="container flex flex-col gap-8 md:flex-row md:justify-between md:items-center p-10">
+          <div className="flex items-center">
             {richText && (
               <RichText className="mb-0" data={richText} enableGutter={false} />
             )}

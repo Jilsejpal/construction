@@ -22,15 +22,18 @@ export const FormBlock: Block = {
       type: "relationship",
       relationTo: "forms",
       required: true,
+      localized: true,
     },
     {
       name: "enableIntro",
       type: "checkbox",
       label: "Enable Intro Content",
+      localized: true,
     },
     {
       name: "introContent",
       type: "richText",
+      localized: true,
       admin: {
         condition: (_, { enableIntro }) => Boolean(enableIntro),
       },

@@ -10,6 +10,7 @@ export const AppartmentGallery: Block = {
       relationTo: "media",
       hasMany: true,
       required: true,
+      localized: true,
     },
   ],
 };

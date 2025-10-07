@@ -2,6 +2,7 @@ import type { GlobalConfig } from "payload";
 
 import { link } from "@/fields/link";
 import { revalidateHeader } from "./hooks/revalidateHeader";
+import { linkGroup } from "@/fields/linkGroup";
 
 export const Header: GlobalConfig = {
   slug: "header",
@@ -30,6 +31,13 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    linkGroup({
+      appearances: ["default", "outline"],
+      overrides: {
+        localized: true,
+        maxRows: 2,
+      },
+    }),
   ],
   hooks: {
     afterChange: [revalidateHeader],

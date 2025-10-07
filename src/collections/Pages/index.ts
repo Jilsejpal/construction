@@ -63,6 +63,11 @@ export const Pages: CollectionConfig<"pages"> = {
       name: "title",
       type: "text",
       required: true,
+      localized: true,
+      // label: {
+      //   en: "Title",
+      //   fr: "Titre",
+      // },
     },
     {
       type: "tabs",
@@ -76,6 +81,7 @@ export const Pages: CollectionConfig<"pages"> = {
             {
               name: "layout",
               type: "blocks",
+              localized: true,
               blocks: [
                 CallToAction,
                 Content,
@@ -95,6 +101,7 @@ export const Pages: CollectionConfig<"pages"> = {
         {
           name: "meta",
           label: "SEO",
+          localized: true,
           fields: [
             OverviewField({
               titlePath: "meta.title",
@@ -124,6 +131,7 @@ export const Pages: CollectionConfig<"pages"> = {
     {
       name: "publishedAt",
       type: "date",
+      localized: true,
       admin: {
         position: "sidebar",
       },

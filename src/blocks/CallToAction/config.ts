@@ -2,7 +2,6 @@ import type { Block } from "payload";
 
 import {
   AlignFeature,
-  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -23,6 +22,7 @@ export const CallToAction: Block = {
     {
       name: "select",
       type: "select",
+      localized: true,
       options: [
         {
           label: "Benefit Section",
@@ -41,6 +41,7 @@ export const CallToAction: Block = {
     {
       name: "richText",
       type: "richText",
+      localized: true,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [
@@ -75,6 +76,7 @@ export const CallToAction: Block = {
     linkGroup({
       appearances: ["default", "outline"],
       overrides: {
+        localized: true,
         admin: {
           condition: (_, { select }) => {
             return select === "other_section" || select === "specifications";
@@ -86,6 +88,7 @@ export const CallToAction: Block = {
     {
       name: "items",
       type: "array",
+      localized: true,
       admin: {
         condition: (_, { select }) => {
           return select === "benefit_section";
@@ -96,19 +99,23 @@ export const CallToAction: Block = {
           name: "icon",
           type: "upload",
           relationTo: "media",
+          localized: true,
         },
         {
           name: "title",
           type: "text",
+          localized: true,
         },
         {
           name: "description",
           type: "text",
+          localized: true,
         },
       ],
     },
     {
       name: "lifestyle",
+      localized: true,
       type: "array",
       maxRows: 1,
       admin: {
@@ -122,10 +129,12 @@ export const CallToAction: Block = {
           type: "upload",
           relationTo: "media",
           hasMany: true,
+          localized: true,
         },
         {
           name: "richText",
           type: "richText",
+          localized: true,
           editor: lexicalEditor({
             features: ({ rootFeatures }) => {
               return [
@@ -162,6 +171,7 @@ export const CallToAction: Block = {
     {
       name: "facilities",
       type: "array",
+      localized: true,
       admin: {
         condition: (_, { select }) => {
           return select === "specifications";
@@ -173,15 +183,18 @@ export const CallToAction: Block = {
           type: "upload",
           relationTo: "media",
           hasMany: true,
+          localized: true,
         },
         {
           name: "displayImage",
           type: "upload",
           relationTo: "media",
+          localized: true,
         },
         {
           name: "richText",
           type: "richText",
+          localized: true,
           editor: lexicalEditor({
             features: ({ rootFeatures }) => {
               return [

@@ -19,7 +19,7 @@ export const Number: React.FC<
 > = ({ name, defaultValue, errors, label, register, required, width }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name} className="text-white">
+      <Label htmlFor={name} className="text-secondary">
         {label}
 
         {required && (
@@ -34,6 +34,7 @@ export const Number: React.FC<
         type="number"
         placeholder={label}
         {...register(name, { required })}
+        className="border border-secondary bg-inherit"
       />
       {errors[name] && <Error name={name} />}
     </Width>

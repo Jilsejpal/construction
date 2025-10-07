@@ -128,7 +128,7 @@ export const FormBlock: React.FC<
   );
 
   return (
-    <div className="w-full bg-black py-10">
+    <div className="w-full bg-card py-10">
       <div className="container">
         {enableIntro && introContent && !hasSubmitted && (
           <RichText
@@ -177,7 +177,7 @@ export const FormBlock: React.FC<
                   form={formID}
                   type="submit"
                   variant="default"
-                  className="w-full bg-secondary text-black hover:bg-secondary"
+                  className="w-full bg-secondary text-accent hover:bg-secondary text-lg"
                 >
                   {submitButtonLabel}
                 </Button>

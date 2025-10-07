@@ -1,6 +1,7 @@
 import type { Field } from "payload";
 
 import {
+  AlignFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -8,6 +9,11 @@ import {
 } from "@payloadcms/richtext-lexical";
 
 import { linkGroup } from "@/fields/linkGroup";
+import {
+  TextColorFeature,
+  TextFontFamilyFeature,
+  TextSizeFeature,
+} from "payload-lexical-typography";
 
 export const hero: Field = {
   name: "hero",
@@ -45,7 +51,26 @@ export const hero: Field = {
         features: ({ rootFeatures }) => {
           return [
             ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3", "h4"] }),
+            AlignFeature(),
+            TextSizeFeature(),
+            TextColorFeature({
+              colors: ["#92846B", "#313131"],
+            }),
+            HeadingFeature({
+              enabledHeadingSizes: ["h1", "h2", "h3", "h4", "h5", "h6"],
+            }),
+            TextFontFamilyFeature({
+              fontFamilies: [
+                {
+                  value: "Poppins",
+                  label: "Poppins",
+                },
+                {
+                  value: "Playfair Display",
+                  label: "Playfair Display",
+                },
+              ],
+            }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ];
